@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BoardGenerator {
-    private String board[][];
+    private char board[][];
     private int size;
     private ArrayList<String> listOfWords = new ArrayList<String>();
     private int numberOfWords;
@@ -16,10 +16,13 @@ public class BoardGenerator {
 
         Random random = new Random();
 
-        board = new String [getSize()][getSize()];
+        board = new char [getSize()][getSize()];
+
+        //User defined method placeWords()
 
         for (int r = 0; r<board.length;r++){
             for (int c = 0; c <board.length;c++){
+                board[r][c] = (char)(random.nextInt(26)+'a');
                 System.out.print (board[r][c] + "  ");
             }
 
@@ -27,7 +30,21 @@ public class BoardGenerator {
         }
     }
 
-    public String[][] getBoard() {
+    private void placewords(){
+        Random random = new Random();
+        String word = "player";
+        //give random position
+        boolean placed = false;
+        while(placed){
+            int row = random.nextInt(getSize()),column = random.nextInt(getSize());
+
+            //check if theres space
+
+
+        }
+    }
+
+    public char[][] getBoard() {
         return board;
     }
 
