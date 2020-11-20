@@ -53,7 +53,6 @@ public class BoardGenerator {
 
         for (int r = 0; r<board.length;r++){
             for (int c = 0; c <board.length;c++){
-
                 System.out.print(board[r][c] + "  ");
 
             }
