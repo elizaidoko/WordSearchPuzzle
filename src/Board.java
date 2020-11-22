@@ -10,12 +10,16 @@ public class Board {
         char[][] board = new char [10][10];
         for (int r = 0; r<board.length;r++){
             for (int c = 0; c <board.length;c++){
-                board[r][c] = (char)(random.nextInt(26) + 'a');
+                board[r][c] = (char)(random.nextInt(5) + '1');
                 System.out.print (board[r][c] + " ");
 
             }
-
+            System.out.println();
         }
+        WordGenerator word = new WordGenerator();
+
+        System.out.println(word.generate() + random.nextInt(23));
+
 
     }
 }

@@ -17,7 +17,7 @@ public class WordGenerator {
         word.add("among");
         word.add("trail");
         word.add("pass");
-        word.add("roger");
+        word.add("river");
         word.add("team");
         word.add("corpse");
         word.add("husband");
