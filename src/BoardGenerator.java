@@ -42,16 +42,19 @@ public class BoardGenerator {
                 if(wordsPlaced == 0)
                     break;
                 for(String l:listOfWords){
-                    if (word.equals(l)) {
-                        picked = true;
+                    while(word.equals(l)) {
+                        word = generator.generate();
 
-                        break;
+                        if(!word.equals(l)){
+                            picked = true;
+                            break;
+                        }
+
                     }
+
                     counter++;
                 }
-                if(picked)
-                    word = generator.generate();
-                else if(counter == listOfWords.size())
+              if(counter == listOfWords.size())
                     break;
             }
             listOfWords.add(word);
@@ -200,4 +203,6 @@ public class BoardGenerator {
     public void setNumberOfWords(int numberOfWords) {
         this.numberOfWords = numberOfWords;
     }
+
+
 }
