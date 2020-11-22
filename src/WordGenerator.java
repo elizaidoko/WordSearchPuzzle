@@ -10,7 +10,7 @@ public class WordGenerator {
     }
 
 
-    public String generate(){
+    public void populate(){
         word.add("host");
         word.add("party");
         word.add("game");
@@ -24,6 +24,12 @@ public class WordGenerator {
         word.add("tea");
         word.add("paint");
         word.add("anime");
+
+    }
+
+    public String generate(){
+        if(word.isEmpty())
+            populate();
 
         return word.get(random.nextInt(word.size()));
     }

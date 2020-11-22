@@ -33,116 +33,9 @@ public class BoardGenerator {
 
 
         while(getWordsPlaced()< getNumberOfWords()){
-            String word = generator.generate();
-            boolean picked = false;
+            String word = pickWord();
 
-            while(!picked)
-            {
-                int counter = 0;
-                if(wordsPlaced == 0)
-                    break;
-                for(String l:listOfWords){
-                    while(word.equals(l)) {
-                        word = generator.generate();
-
-                        if(!word.equals(l)){
-                            picked = true;
-                            break;
-                        }
-
-                    }
-
-                    counter++;
-                }
-              if(counter == listOfWords.size())
-                    break;
-            }
-            listOfWords.add(word);
-
-            boolean horizontal = false;
-
-            int n = random.nextInt(20);
-
-            if(n % 2==0)
-                horizontal = true;
-
-            if(horizontal){
-                //placed horizontally
-
-                int ncol = random.nextInt(getSize());
-                int nrow = random.nextInt(getSize());
-
-
-                while(getSize()-ncol < word.length()){
-                    ncol--;
-                }
-
-                boolean space = true;
-
-                for(int i=0; i<word.length() ; i++){
-                    if (board[nrow][ncol + i] != (char) 0) {
-                        space = false;
-                        break;
-                    }
-
-                }
-
-               while(!space){
-                    int count = 0;
-                    nrow = random.nextInt(getSize());
-                    for(int i=0; i<word.length() ; i++){
-                        if (board[nrow][ncol + i] == (char) 0) {
-                            count++;
-                        }
-                    }
-                    if(count == word.length()){
-                        space = true;
-                    }
-                }
-
-                for(int i=0; i<word.length() ; i++){
-                    board[nrow][ncol+i] = word.charAt(i);
-                }
-
-            }
-            else
-            {
-                //placed vertically
-                int ncol = random.nextInt(getSize());
-                int nrow = random.nextInt(getSize());
-
-
-                while(getSize()-nrow < word.length()){
-                    nrow--;
-                }
-
-                boolean space = true;
-
-                for(int i=0; i<word.length() ; i++){
-                    if (board[nrow+ i][ncol] != (char) 0) {
-                        space = false;
-                        break;
-                    }
-
-                }
-
-               while(!space){
-                    int count = 0;
-                    nrow = random.nextInt(getSize());
-                    for(int i=0; i<word.length() ; i++){
-                        if (board[nrow + i][ncol] == (char) 0) {
-                            count++;
-                        }
-                    }
-                    if(count == word.length()){
-                        break;
-                    }
-                }
-
-                for(int i=0; i<word.length() ; i++){
-                    board[nrow+i][ncol] = word.charAt(i);
-                }
-            }
+            placeword(word);
 
             wordsPlaced++;
 
@@ -170,6 +63,126 @@ public class BoardGenerator {
             System.out.println(l);
         }
 
+    }
+
+    public String pickWord(){
+        String word = generator.generate();
+
+        boolean picked = false;
+        boolean found;
+
+        while(!picked){
+            found = false;
+            if(!listOfWords.isEmpty()){
+                for(String l:listOfWords){
+                    if(word.equals(l))
+                        found = true;
+
+                }
+                if(!found)
+                    picked = true;
+                else
+                    word = generator.generate();
+            }
+            else
+                picked=true;
+            }
+
+        listOfWords.add(word);
+        return word;
+
+    }
+
+    public void placeword(String word){
+        boolean horizontal = false;
+
+        int n = random.nextInt();
+
+        if(n % 2==0)
+            horizontal = true;
+
+        if(horizontal){
+            //placed horizontally
+
+            int ncol = random.nextInt(getSize());
+            int nrow = random.nextInt(getSize());
+
+
+            while(getSize()-ncol < word.length()){
+                ncol--;
+            }
+
+            boolean space = true;
+
+            for(int i=0; i<word.length() ; i++){
+                if (board[nrow][ncol + i] != (char) 0) {
+                    space = false;
+                    break;
+                }
+
+            }
+
+            while(!space){
+                int count = 0;
+                nrow = random.nextInt(getSize());
+                for(int i=0; i<word.length() ; i++){
+                    if (board[nrow][ncol + i] == (char) 0 || board[nrow][ncol] == word.charAt(i)) {
+                        count++;
+                    }
+                }
+                if(count == word.length()){
+                    space = true;
+                }
+            }
+
+            for(int i=0; i<word.length() ; i++){
+                board[nrow][ncol+i] = word.charAt(i);
+            }
+
+        }
+        else
+        {
+            //placed vertically
+            int ncol = random.nextInt(getSize());
+            int nrow = random.nextInt(getSize());
+
+
+            while(getSize()-nrow < word.length()){
+                nrow--;
+            }
+
+            boolean space = true;
+
+            for(int i=0; i<word.length() ; i++){
+                if (board[nrow + i][ncol] != (char) 0) {
+                    space = false;
+                    break;
+                }
+
+            }
+
+            while(!space){
+                int count = 0;
+                nrow = random.nextInt(getSize());
+
+                while(getSize()-nrow < word.length()){
+                    nrow--;
+                }
+
+                for(int i=0; i<word.length() ; i++){
+                    if (board[nrow + i][ncol] == (char)0 || board[nrow][ncol] == word.charAt(i)) {
+                        count++;
+                    }
+                }
+                if(count == word.length()){
+                    break;
+                }
+            }
+
+            for(int i=0; i<word.length() ; i++){
+                board[nrow+i][ncol] = word.charAt(i);
+            }
+        }
     }
 
     //accessors
