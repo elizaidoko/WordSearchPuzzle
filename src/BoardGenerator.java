@@ -65,7 +65,7 @@ public class BoardGenerator {
 
     }
 
-    public String pickWord(){
+    private String pickWord(){
         String word = generator.generate();
 
         boolean picked = false;
@@ -93,7 +93,7 @@ public class BoardGenerator {
 
     }
 
-    public void placeword(String word){
+    private void placeword(String word){
         boolean horizontal = false;
 
         int n = random.nextInt();
