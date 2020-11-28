@@ -1,7 +1,9 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class BoardGenerator {
+
     private char[][] board;
     private int size;
     private ArrayList<String> listOfWords = new ArrayList<String>();
@@ -9,13 +11,10 @@ public class BoardGenerator {
     private int wordsPlaced;
     private WordGenerator generator;
     private Random random = new Random();
+    private String view;
 
     public int getWordsPlaced() {
         return wordsPlaced;
-    }
-
-    public void setWordsPlaced(int wordsPlaced) {
-        this.wordsPlaced = wordsPlaced;
     }
 
     public BoardGenerator(int numberOfWords,int size){
@@ -53,11 +52,15 @@ public class BoardGenerator {
 
         for (int r = 0; r<board.length;r++){
             for (int c = 0; c <board.length;c++){
-                System.out.print(board[r][c] + "  ");
+                System.out.print(board[r][c] + "");
+                output += board[r][c];
 
             }
             System.out.println();
+            output += "\n";
         }
+
+        view = output;
 
         for(String l:listOfWords){
             System.out.println(l);
@@ -192,7 +195,9 @@ public class BoardGenerator {
     //
 
     public char[][] getBoard() {
-        return board;
+        if(board != null)
+            return Arrays.copyOf(board,board.length);
+        return null;
     }
 
 
@@ -217,5 +222,11 @@ public class BoardGenerator {
         this.numberOfWords = numberOfWords;
     }
 
+    public String getView() {
+        return view;
+    }
 
+    public void setView(String view) {
+        this.view = view;
+    }
 }
