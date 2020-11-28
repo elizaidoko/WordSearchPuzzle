@@ -9,15 +9,17 @@ public class Display extends JFrame{
     private JPanel grid = new JPanel();
 
     public Display(){
-        board = new BoardGenerator(5,20);
+        board = new BoardGenerator(10,20);
         board.display();
         setTitle("Grid");
-        setSize(600,600);
+        setSize(1000,1000);
         setVisible(true);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new BorderLayout());
+        setLayout(new BorderLayout(3,3));
 
         buildGrid();
+        WordList();
+
     }
 
     public void buildGrid(){
@@ -33,6 +35,19 @@ public class Display extends JFrame{
         }
 
         add(grid,BorderLayout.CENTER);
+    }
+
+    public void WordList(){
+        JPanel wordList = new JPanel(new GridLayout(board.getListOfWords().size(),1));
+        JLabel[] word = new JLabel[board.getListOfWords().size()];
+
+        for(int i=0;i<board.getListOfWords().size();i++){
+            word[i] = new JLabel(board.getListOfWords().get(i));
+            wordList.add(word[i]);
+        }
+
+        add(wordList,BorderLayout.EAST);
+
     }
 
     public static void main(String[] args){
