@@ -24,6 +24,7 @@ public class BoardGenerator {
     }
 
     public void display(){
+        //sets up the board
         String output="";
 
         Random random = new Random();
@@ -69,6 +70,7 @@ public class BoardGenerator {
     }
 
     private String pickWord(){
+        //Checks if word has been selected
         String word = generator.generate();
 
         boolean picked = false;
