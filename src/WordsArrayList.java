@@ -1,3 +1,5 @@
+//https://github.com/dwyl/english-words/blob/master/words_alpha.txt
+//reference of where i got the text file from
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -14,14 +16,11 @@ public class WordsArrayList {
         words = new ArrayList<>();
         try 
         {
-            // Prepare to read from the file, using a Scanner
             File file = new File(fileName);
             Scanner in = new Scanner(file);
 
-            // Read each word until end of file is reached
             while (in.hasNextLine())
             {
-                // Read one word from the file
                 String word = in.nextLine();
                 if(word.length() > 4 && word.length() < 8)
                     words.add(word);

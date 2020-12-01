@@ -231,4 +231,6 @@ public class BoardGenerator {
     public void setView(String view) {
         this.view = view;
     }
+
+
 }
