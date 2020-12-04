@@ -1,3 +1,5 @@
+//https://stackoverflow.com/questions/32196327/how-to-get-the-part-of-the-text-from-jlabel-according-mouse-pointer
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -57,47 +59,47 @@ public class Display extends JFrame implements MouseListener{
     }
 
     public void mouseClicked(MouseEvent e){
-        JLabel jLabel = (JLabel) e.getSource();
-        jLabel.setBackground(Color.PINK);
 
-        if(getWord().length() < 7){
-            word += jLabel.getText();
-            coordinates.add(jLabel);
-            //pickedWord.add(jLabel);
+        if(pickedWord.size() == board.getListOfWords().size()){
+            this.setVisible(false);
+            JOptionPane.showMessageDialog(null,"Congratulations you have won","Winner",JOptionPane.INFORMATION_MESSAGE);
         }
-        else
-        {
-            for(int r=0; r<board.getSize(); r++){
-                for(int c=0; c<board.getSize(); c++){
+        else{
+            JLabel jLabel = (JLabel) e.getSource();
+            jLabel.setBackground(Color.PINK);
 
-                    if(jLabels[r][c].getBackground() != Color.GREEN)
-                        jLabels[r][c].setBackground(Color.WHITE);
-                }
+            if(getWord().length() < 7){
+                word += jLabel.getText();
+                coordinates.add(jLabel);
+                //pickedWord.add(jLabel);
             }
+            else
+            {
+                for(int r=0; r<board.getSize(); r++){
+                    for(int c=0; c<board.getSize(); c++){
 
-            word = "";
-            coordinates = new ArrayList<>();
-        }
-
-        for(String l:board.getListOfWords()){
-            if(word.equals(l)){
-                for(JLabel j:coordinates){
-                    j.setBackground(Color.GREEN);
+                        if(jLabels[r][c].getBackground() != Color.GREEN)
+                            jLabels[r][c].setBackground(Color.WHITE);
+                    }
                 }
-                coordinates = new ArrayList<>();
-                //jLabel.setBackground(Color.GREEN);
-                pickedWord.add(word);
+
                 word = "";
+                coordinates = new ArrayList<>();
             }
+
+            for(String l:board.getListOfWords()){
+                if(word.equals(l)){
+                    for(JLabel j:coordinates){
+                        j.setBackground(Color.GREEN);
+                    }
+                    coordinates = new ArrayList<>();
+                    pickedWord.add(word);
+                    word = "";
+                }
+            }
+
         }
 
-
-//        for(int r=0; r<board.getSize(); r++){
-//            for(int c=0; c<board.getSize(); c++){
-//                if(jLabel[r][c] == e.getSource())
-//                    jLabel[r][c].setBackground(Color.PINK);
-//            }
-//        }
     }
 
     public static void main(String[] args){
@@ -105,7 +107,6 @@ public class Display extends JFrame implements MouseListener{
     }
 
     public void mousePressed(MouseEvent e) {
-        System.out.println("Mouse was pressed");
 
     }
 
