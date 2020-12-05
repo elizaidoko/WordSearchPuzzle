@@ -1,4 +1,3 @@
-//https://stackoverflow.com/questions/32196327/how-to-get-the-part-of-the-text-from-jlabel-according-mouse-pointer
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,7 +15,7 @@ public class Display extends JFrame implements MouseListener{
     private ArrayList<JLabel> coordinates = new ArrayList<>();
 
     public Display(){
-        board = new BoardGenerator(10,20);
+        board = new BoardGenerator(15,20);
         board.display();
         setTitle("Grid");
         setSize(1000,1000);
@@ -26,7 +25,6 @@ public class Display extends JFrame implements MouseListener{
 
         buildGrid();
         WordList();
-
     }
 
     public void buildGrid(){
@@ -51,12 +49,18 @@ public class Display extends JFrame implements MouseListener{
 
         for(int i=0;i<board.getListOfWords().size();i++){
             word[i] = new JLabel(board.getListOfWords().get(i));
+            for(String g:pickedWord){
+                if(word[i].getText().equals(g)){
+                    word[i].setBackground(Color.ORANGE);
+                }
+            }
             wordList.add(word[i]);
         }
 
         add(wordList,BorderLayout.EAST);
 
     }
+
 
     public void mouseClicked(MouseEvent e){
 
@@ -71,14 +75,13 @@ public class Display extends JFrame implements MouseListener{
             if(getWord().length() < 7){
                 word += jLabel.getText();
                 coordinates.add(jLabel);
-                //pickedWord.add(jLabel);
             }
             else
             {
                 for(int r=0; r<board.getSize(); r++){
                     for(int c=0; c<board.getSize(); c++){
 
-                        if(jLabels[r][c].getBackground() != Color.GREEN)
+                        if(jLabels[r][c].getBackground() != Color.GREEN && jLabels[r][c].getBackground() == Color.PINK )
                             jLabels[r][c].setBackground(Color.WHITE);
                     }
                 }

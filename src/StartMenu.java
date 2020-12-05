@@ -1,8 +1,3 @@
-//code reference
-//http://www.java2s.com/Tutorial/Java/0240__Swing/NoLayoutManagerAbsolutepositioning.htm
-//https://www.tutorialspoint.com/how-to-add-background-image-to-jframe-in-java
-//image reference
-//https://www.google.com/search?q=word+search+game+background&tbm=isch&ved=2ahUKEwiXvbHLjbPtAhXFS8AKHUHiBZIQ2-cCegQIABAA&oq=word+search+game+background&gs_lcp=CgNpbWcQAzoECCMQJzoGCAAQCBAeOgQIABAYOgIIAFCmhQJYpM8CYJfTAmgBcAB4AIAB6QGIAbsHkgEGMTQuMC4xmAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=mofJX5eIO8WXgQbBxJeQCQ&safe=active#imgrc=PJCX-NPjEdBoWM&imgdii=qAgNuRki1e1ofM
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,13 +13,25 @@ public class StartMenu extends JFrame implements ActionListener{
     Image img = Toolkit.getDefaultToolkit().getImage("image.jpg");
 
     public StartMenu() throws IOException {
+        /*****************************************************
+         *    Title: Efforts in iteration - FizzBuzz
+         *    Author: Samuel Sam
+         *    Site owner/sponsor: tutorialspoint.com
+         *    Date: 2019
+         *    Code version: edited May 24 2016 at 19:22
+         *    Availability: https://www.tutorialspoint.com/how-to-add-background-image-to-jframe-in-java (Accessed 4 December 2020)
+         *    Modified: changed image
+         *****************************************************/
+
         this.setContentPane(new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                g.drawImage(img, 0, 0, null);
+                g.drawImage(img, 0, 0, this);
             }
         });
+
+        //Edited code ends here
         setSize(866,500);
         setLocation(300,300);
         setTitle("Word Search");
