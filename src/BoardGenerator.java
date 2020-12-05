@@ -13,9 +13,7 @@ public class BoardGenerator {
     private Random random = new Random();
     private String view;
 
-    public int getWordsPlaced() {
-        return wordsPlaced;
-    }
+
 
     public BoardGenerator(int numberOfWords,int size){
         generator = new WordGenerator();
@@ -201,7 +199,9 @@ public class BoardGenerator {
             return Arrays.copyOf(board,board.length);
         return null;
     }
-
+    public int getWordsPlaced() {
+        return wordsPlaced;
+    }
 
     public int getSize() {
         return size;

@@ -1,12 +1,12 @@
 //https://github.com/dwyl/english-words/blob/master/words_alpha.txt
-//reference of where i got the text file from
+//where i got the text file from
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordsArrayList {
-    public ArrayList<String> words;
+    private ArrayList<String> words;
     
     public WordsArrayList(){
         load("words_alpha.txt");
@@ -34,7 +34,7 @@ public class WordsArrayList {
         }   
     }
 
-    ArrayList<String> getWords(){
+    public ArrayList<String> getWords(){
         return  words;
 
     }

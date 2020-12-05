@@ -105,10 +105,6 @@ public class Display extends JFrame implements MouseListener{
 
     }
 
-    public static void main(String[] args){
-        Display d = new Display();
-    }
-
     public void mousePressed(MouseEvent e) {
 
     }
@@ -144,36 +140,9 @@ public class Display extends JFrame implements MouseListener{
         this.jLabels = jLabels;
     }
 
-    public BoardGenerator getBoard() {
-        return board;
-    }
-
-    public void setBoard(BoardGenerator board) {
-        this.board = board;
-    }
-
-    public JPanel getGrid() {
-        return grid;
-    }
-
-    public void setGrid(JPanel grid) {
-        this.grid = grid;
-    }
-
-    public Color getDefaultColour() {
-        return defaultColour;
-    }
-
-    public void setDefaultColour(Color defaultColour) {
-        this.defaultColour = defaultColour;
-    }
 
     public String getWord() {
         return word;
-    }
-
-    public void setWord(String word) {
-        this.word = word;
     }
 
 }

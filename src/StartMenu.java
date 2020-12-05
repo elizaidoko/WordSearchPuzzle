@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class StartMenu extends JFrame implements ActionListener{
-    //private Container container;
     private JButton startButton;
     private JLabel player;
     private JTextField name;
